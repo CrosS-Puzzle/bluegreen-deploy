@@ -7,9 +7,12 @@ on:
 name: CI on ECR
 
 jobs:
-  deploy:
-    name: Deploy
+  deploy-ecr:
+    name: Deploy-ECR
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
 
