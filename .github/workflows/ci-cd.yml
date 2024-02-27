@@ -33,8 +33,7 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          aws s3 cp --region ${{ secrets.AWS_REGION }} --acl private ./deploy-$IMAGE_TAG.zip |
-          s3://${{ secrets.AWS_S3_BUCKET_NAME }}
+          aws s3 cp ./deploy-$IMAGE_TAG.zip s3://${{ secrets.AWS_S3_BUCKET_NAME }}/deploy-$IMAGE_TAG.zip
 
       - name: Trigger CodeDeploy
         env:
