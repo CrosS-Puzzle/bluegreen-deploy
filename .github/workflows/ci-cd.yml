@@ -39,7 +39,9 @@ jobs:
         env:
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          aws deploy create-deployment --application-name ${{ secrets.AWS_CODEDEPLOY_APPLICATION_NAME }} |
-          --deployment-config-name CodeDeployDefault.AllAtOnce |
-          --deployment-group-name ${{ secrets.AWS_CODEDEPLOY_DEPLOYMENT_GROUP_NAME }} |
+          aws deploy create-deployment \
+          --application-name ${{ secrets.AWS_CODEDEPLOY_APPLICATION_NAME }} \
+          --deployment-config-name CodeDeployDefault.AllAtOnce \
+          --deployment-group-name ${{ secrets.AWS_CODEDEPLOY_DEPLOYMENT_GROUP_NAME }} \
           --s3-location bucket=${{ secrets.AWS_S3_BUCKET_NAME }},bundleType=zip,key=deploy-$IMAGE_TAG.zip
+
